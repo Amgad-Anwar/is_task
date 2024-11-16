@@ -12,4 +12,4 @@ const pinia = createPinia();
 createApp(App)
   .use(pinia)
   .use(router)
-  .mount('#app');  // This should match the `id` in the Blade template
+  .mount('#app');  

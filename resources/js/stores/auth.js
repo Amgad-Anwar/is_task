@@ -62,5 +62,5 @@ export const useAuthStore = defineStore('auth', {
 
     },
 
-    persist: true,  // Optional: Persist the state across page reloads.
+    persist: true,  
 });

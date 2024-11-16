@@ -97,24 +97,24 @@ const userData = ref({
   password_confirmation: '',
 });
 
-const isLoading = ref(false); // Loader state
+const isLoading = ref(false);
 const authStore = useAuthStore();
 const router = useRouter();
 
 const handleSignup = async () => {
-  isLoading.value = true; // Show loader
+  isLoading.value = true;
   try {
     await authStore.signup(userData.value, router);
   } catch (error) {
     console.error(error);
   } finally {
-    isLoading.value = false; // Hide loader
+    isLoading.value = false;
   }
 };
 </script>
 
 <style scoped>
-/* Loader Styles */
+
 .loader-overlay {
   position: fixed;
   top: 0;
@@ -129,7 +129,7 @@ const handleSignup = async () => {
 }
 
 .loader-logo {
-  width: 100px; /* Adjust size as needed */
+  width: 100px; 
   height: auto;
   animation: pulse 1.5s ease-in-out infinite;
 }

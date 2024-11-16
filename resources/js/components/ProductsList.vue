@@ -56,7 +56,7 @@
         </div>
       </div>
 
-      <!-- Loading spinner while fetching products -->
+      <!-- Loading fetching products -->
       <div v-if="productsStore.loading" class="text-center m-5">Loading...</div>
     </div>
 
@@ -171,13 +171,10 @@ export default {
     const router = useRouter();
 
 
-    // Reactive variable for controlling the cart modal visibility
     const showCartModal = ref(false);
 
-    // Fetch products on mount
     productsStore.fetchProducts();
 
-    // Add product to the cart
     const addToCart = (product) => {
       cartStore.addToCart(product);
       toast.success("Item added to cart!", { position: "bottom-right" });
@@ -194,7 +191,6 @@ export default {
       toast.info("Item removed from cart", { position: "bottom-right" });
     };
 
-    // Update quantity of a cart item
     const updateQuantity = (item) => {
       cartStore.updateItemQuantity(item);
       toast.info("Cart updated", { position: "buttom-right" });
@@ -205,21 +201,17 @@ export default {
       toast.info("Cart has been emptied", { position: "bottom-right" });
     };
 
-    // Checkout function
 const checkout = async () => {
   try {
     toast.info("Proceeding to checkout...", { position: "bottom-right" });
 
-    // Prepare cart data to be sent
     const cartData = cartStore.cartItems.map((item) => ({
       product_id: item.id,
       quantity: item.quantity,
       price: item.price,
     }));
 
-    // Retrieve token from localStorage
     const token = localStorage.getItem('token');
-    // If the token exists, include it in the request headers
     const headers = token ? { Authorization: `Bearer ${token}` } : {};
 
     const response = await axios.post("/api/checkout", { cart: cartData }, { headers });

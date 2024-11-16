@@ -15,7 +15,7 @@ export const useProductsStore = defineStore('products', {
 
         this.loading = true;
         try {
-          const token = localStorage.getItem('token'); // Retrieve token from localStorage
+          const token = localStorage.getItem('token'); 
 
           const headers = token ? { Authorization: `Bearer ${token}` } : {};
           if (search) {
