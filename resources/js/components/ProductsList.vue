@@ -193,7 +193,7 @@ export default {
 
     const updateQuantity = (item) => {
       cartStore.updateItemQuantity(item);
-      toast.info("Cart updated", { position: "buttom-right" });
+      toast.info("Cart updated", { position: "bottom-right" });
     };
 
     const emptyCart = () => {
